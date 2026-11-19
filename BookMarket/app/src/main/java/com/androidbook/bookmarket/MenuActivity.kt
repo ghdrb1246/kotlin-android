@@ -16,6 +16,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.androidbook.bookmarket.mypage.MyPageActivity
 import com.google.android.material.navigation.NavigationView
 
 class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -52,7 +53,6 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val intent : Intent = Intent(this, BooksActivity::class.java)
         startActivity(intent)
     }
-
     fun onEBookClick(view: View?){
         Toast.makeText(getApplicationContext(),"E-Book 버튼을 클릭하였습니다",Toast.LENGTH_LONG).show()
     }
@@ -62,7 +62,9 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     fun onMyPageClick(view: View?){
-        Toast.makeText(getApplicationContext(),"나의페이지 버튼을 클릭하였습니다",Toast.LENGTH_LONG).show()
+        // Toast.makeText(getApplicationContext(),"나의페이지 버튼을 클릭하였습니다",Toast.LENGTH_LONG).show()
+        val intent = Intent(this, MyPageActivity::class.java)
+        startActivity(intent)
     }
 
     fun onMarketInfoClick(view: View?){
@@ -81,13 +83,11 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-
         when (item.itemId) {
             R.id.menu01 -> {
                 //Toast.makeText(this, " 메뉴2 : " + item.title, Toast.LENGTH_SHORT).show()
                 val builder = AlertDialog.Builder(this)
                 val dialogView = layoutInflater.inflate(R.layout.dialog_login, null)
-
                 builder.setView(dialogView)
 
                 val  dialog = builder.show()
